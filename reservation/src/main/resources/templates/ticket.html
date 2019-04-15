@@ -1,0 +1,59 @@
+
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Spring Boot Thymeleaf Hello World Example</title>
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+</head>
+
+    <body>
+
+
+    <div class="container">
+
+        Bonjour Mr <h4  th:text="${client.nom}"> </h4> <h4  th:text="${client.prenom}"> </h4>
+        Nous vous remerçions pour votre confiance .
+    </div>
+
+
+    <main role="main" class="container">
+
+        <div class="starter-template">
+            <h1>Spring Boot Web Thymeleaf Example</h1>
+
+        </div>
+
+        <h1  th:text="${client.nom}"> </h1>
+
+
+    </main>
+    <!-- /.container -->
+
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    </body>
+</html>
+<!--<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>-->
+<!--<html>-->
+<!--<head>-->
+    <!--<script src="/webjars/jquery/jquery.min.js"></script>-->
+    <!--<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>-->
+    <!--<title>WebJars Demo</title>-->
+    <!--<link rel="stylesheet"-->
+          <!--href="/webjars/bootstrap/4.2.1/css/bootstrap.min.css" />-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="container"><br/>-->
+    <!--<div class="alert alert-success">-->
+        <!--<a href="#" class="close" data-dismiss="alert"-->
+           <!--aria-label="close">×</a>-->
+        <!--<strong>Success!</strong> It is working as we expected.-->
+    <!--</div>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->

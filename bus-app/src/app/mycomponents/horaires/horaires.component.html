@@ -1,0 +1,27 @@
+ <div *ngIf="verifVoyage">
+  <table *ngFor= " let hor of listeHoraires" class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Ville de départ</th>
+        <th scope="col">Destination</th>
+        <th scope="col">Heure de départ</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Paris</td>
+        <td>Barcelona</td>
+        <td>{{hor.heureDepart}}GMT</td>
+        <td> <button mat-fab color="primary"  (click)="goToReservation(hor.id)" RouterLink='donper'>Reserver</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <br> <br>
+</div>
+<div class="container" *ngIf ="!verifVoyage">
+  <div class="jumbotron" style="background:#f4dada !important">
+    <h1>Voyage Introuvable</h1>
+    <p>La date que vous avez Choisie ne correspond à aucun voyage ! veuillez Choisir une autre date </p>
+  </div>
+</div>

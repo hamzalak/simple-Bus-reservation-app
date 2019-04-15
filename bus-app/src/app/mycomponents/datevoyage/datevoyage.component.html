@@ -1,0 +1,16 @@
+
+<!-- *ngIf="showcover"   routerLink="horaire"-->
+<body>
+  <div class="cc">
+    <h3>SOS Voyage</h3>
+    <form class="cc" #f="ngForm" (ngSubmit)="getDateClient(f.value)">
+      <mat-form-field class="example-full-width">
+        <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" name="dateClient"
+          ngModel  placeholder="Choisir une date" autocomplete="off" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field> <br>
+     <button mat-fab type="submit">Search</button>
+    </form>
+  </div>
+</body>

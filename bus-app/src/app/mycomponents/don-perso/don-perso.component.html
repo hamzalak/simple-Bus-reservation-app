@@ -1,0 +1,105 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3>RESERVATION</h3>
+  </div>
+  <form #f='ngForm' (ngSubmit)='sendData()' *ngIf="show">
+    <div class="panel-body col-md-10 col-md-push-2">
+      <mat-vertical-stepper [linear]="isLinear" #stepper>
+        <mat-step [completed]="false" [stepControl]="firstFormGroup">
+          <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>
+              <h4>Informations personnelles</h4>
+            </ng-template>
+            <mat-form-field>
+              <input matInput name="nom" [(ngModel)]="nom" placeholder="Nom" formControlName="nom" required>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+              <input matInput name="prenom" [(ngModel)]="prenom" placeholder="Prénom" formControlName="prenom" required>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+              <input matInput [(ngModel)]="age" name="age" placeholder="Àge" formControlName="age" required>
+            </mat-form-field>
+            <div>
+              <p *ngIf="age > 140" style="color:red ;">Age invalid</p>
+              <button [disabled]="!firstFormGroup.valid" mat-button matStepperNext class="btn btn-info">suivant</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [completed]="false" [stepControl]="secondFormGroup">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Nombre de places</ng-template>
+            <mat-form-field>
+              <input matInput name="nbrPlaces" [(ngModel)]="nbrPlaces" placeholder="Nombre de places" formControlName="nbrPlaces" required> <br>
+            </mat-form-field>
+            <div>
+              <p *ngIf="nbrPlace > 5" style="color:red ;"> veuillez entrer 5 places aux maximum</p>
+              <button mat-button matStepperPrevious class="btn btn-success">retour</button>
+              <span> &nbsp; </span>
+              <button [disabled]="!secondFormGroup.valid" mat-button matStepperNext class="btn btn-info">suivant</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [completed]="false">
+          <ng-template matStepLabel>Fait</ng-template>
+          <p *ngIf='secondFormGroup.valid && firstFormGroup.valid'>Vous avez terminé.</p>
+          <div>
+            <button mat-button matStepperPrevious class="btn btn-success">retour</button>
+            <span> &nbsp; </span>
+            <button mat-button type="button" [disabled]='!secondFormGroup.valid || !firstFormGroup.valid' class="btn btn-success" data-toggle="modal" data-target="#myModal">confirmer</button>
+            <div class="modal fade" data-backdrop="false" id="myModal" role="dialog">
+              <div class="modal-dialog modal-sm">
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Confirmation</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p>Êtes vous sûr des infos que vous avez entrées</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">fermer</button>
+                    <button type="button" type='submit' class="btn btn-default">envoyer</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-step>
+      </mat-vertical-stepper>
+    </div>
+  </form>
+</div>
+<div class="container" *ngIf="!show">
+  <div class="jumbotron" style="background:#a4f6a5 !important">
+    <h1>Reservation Reussie !</h1>
+    <p>Cliquer ici pour imprimer votre Ticker <button type='button' (click)='generatePdf()' class="btn btn-danger"><strong>PDF</strong></button>
+    </p>
+  </div>
+</div>
+<div *ngIf="!show" class="container" id="ticket">
+  <h2> VOTRE RÉSERVATION</h2>
+  <h4>A CONSERVER PRÉCIEUSEMENT</h4>
+  <span>Bonjour {{clientResponse.nom}},</span> <br>
+  <span>Vous avez effectué une réservation sur notre site le {{datePipe}} et nous vous en remercions.</span>
+  <span>Vous trouverez ci-dessous le détail de votre commande ainsi que la marche à suivre pour la suite de votre voyage.</span>
+  <span>Référence de dossier : {{clientResponse.numeroReservation}}{{idVoyage}}</span>
+
+  <table>
+    <thead>
+      <tr>
+        <td rowspan="4">
+           <strong>  {{clientResponse.dateVoyage}} &nbsp; &nbsp; {{clientResponse.heureVoyage}}</strong>
+         </td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr> <td><span class="glyphicon glyphicon-road"></span> &nbsp; &nbsp;</td> <td rowspan="3"> <strong>Paris</strong> &nbsp; &nbsp; <span class="glyphicon glyphicon-arrow-right"></span>&nbsp; &nbsp; <strong>Barcelona</strong></td> </tr>
+    </tbody>
+  </table>
+  Passager : {{clientResponse.nom}} {{clientResponse.prenom}} <br>
+  N° de sièges : <span *ngFor="let  p of  clientResponse.places"> {{p.id}} &nbsp; ,  </span>
+
+</div>

@@ -39,7 +39,6 @@ export class HorairesComponent implements OnInit {
   }
 ///////////////////////////////souscription au router actif et obtention de son url///////////
   changeUrl() {
-
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         let url: string = atob(this.activatedRoute.snapshot.params.infoUrl);
@@ -53,7 +52,7 @@ export class HorairesComponent implements OnInit {
   ////////////////////////////////Fournir le id du voyage au router pour garder le id du voyage donné pour la reservation//////////
   goToReservation(id: number) {
 
-    let urlEnd = this.urlVoyage+id ; 
+    let urlEnd = this.urlVoyage+id ;
     this.router.navigateByUrl("/perso/" + btoa(urlEnd))  ;
 
   }

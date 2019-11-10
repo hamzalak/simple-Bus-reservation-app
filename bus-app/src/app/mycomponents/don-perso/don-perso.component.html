@@ -40,6 +40,8 @@
               <button [disabled]="!secondFormGroup.valid" mat-button matStepperNext class="btn btn-info">suivant</button>
             </div>
           </form>
+          <br/>
+         <span style="color:red ; "> Attention il rest {{placesRestant}} places ! </span>
         </mat-step>
         <mat-step [completed]="false">
           <ng-template matStepLabel>Fait</ng-template>

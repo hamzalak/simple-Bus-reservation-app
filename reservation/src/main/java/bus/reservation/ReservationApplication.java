@@ -48,17 +48,17 @@ public class ReservationApplication {
 		return  args->{
 
 			/////Instanciation d'un nouveau voyage///////
-            iPlaceRepository.deleteAll();
-            iPersonneRepository.deleteAll();
-            iReservationRepository.deleteAll();
-            iVoyageInfoRepository.deleteAll();
-			LocalDate dateVoyage1 = DateUtils.parseDate("20/05/2019") ;
+                        iPlaceRepository.deleteAll();
+                        iPersonneRepository.deleteAll();
+                        iReservationRepository.deleteAll();
+                        iVoyageInfoRepository.deleteAll();
+			LocalDate dateVoyage1 = DateUtils.parseDate("20/05/2021") ;
 			LocalTime timeVoyage1 = DateUtils.parseTime("12:30") ;
 			VoyageInfo voyageInfo1 = new VoyageInfo(dateVoyage1,timeVoyage1) ;
-			LocalDate dateVoyage2 = DateUtils.parseDate("20/05/2019") ;
+			LocalDate dateVoyage2 = DateUtils.parseDate("20/05/2021") ;
 			LocalTime timeVoyage2 = DateUtils.parseTime("17:30") ;
 			VoyageInfo voyageInfo2 = new VoyageInfo(dateVoyage2,timeVoyage2) ;
-			LocalDate dateVoyage3 = DateUtils.parseDate("20/05/2019") ;
+			LocalDate dateVoyage3 = DateUtils.parseDate("20/05/2021") ;
 			LocalTime timeVoyage3 = DateUtils.parseTime("20:30") ;
 			VoyageInfo voyageInfo3 = new VoyageInfo(dateVoyage3,timeVoyage3) ;
 			iVoyageInfoRepository.save(voyageInfo1) ;
@@ -89,27 +89,27 @@ public class ReservationApplication {
 
 			////////////////////Personne/////////////////////////
 
-			Personne per = new Personne( "Santos", "hamoud", 54)  ;
+			/*Personne per = new Personne( "Santos", "hamoud", 54)  ;
 			Personne per2 = new Personne( "Santos", "hamoud", 54)  ;
 
 			iPersonneRepository.save(per) ;
-			iPersonneRepository.save(per2) ;
+			iPersonneRepository.save(per2) ;*/
 
 
 			////////////////////Reservation //////////////////////
 
-			Reservation res1 = new Reservation() ;
+			/*Reservation res1 = new Reservation() ;
 			Reservation res2 = new Reservation() ;
 
 			res1.setVoyageInfo(voyageInfo1);
 			List<Reservation>  reservations = new ArrayList<>();
-            reservations.add(res1) ;
+                        reservations.add(res1) ;
 			reservations.add(res2) ;
 			reservations.stream().forEach( reservation ->{
 				reservation.setPersonne(per) ;
 				reservation.setVoyageInfo(voyageInfo1);
  				iReservationRepository.save(reservation) ;
-			});
+			});*/
 
 
 

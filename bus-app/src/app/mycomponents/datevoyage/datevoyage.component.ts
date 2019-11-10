@@ -12,7 +12,7 @@ export class DatevoyageComponent implements OnInit {
   url: string = "http://localhost:9090/horaires/" ;
   lesHoraires : any;
   minDate = new Date();
-  maxDate = new Date(2020, 0, 1);
+  maxDate = new Date(2023, 0, 1);
   constructor(private router: Router) { }
 
   ngOnInit() {

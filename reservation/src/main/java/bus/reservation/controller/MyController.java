@@ -43,7 +43,6 @@ public class MyController {
 
       String dateSt = dt.substring(0,2) + "/"+ dt.substring(2,4) +"/"+dt.substring(4,8) ;
 
-      System.out.println(dateSt);
 
       LocalDate clientDt = DateUtils.parseDate(dateSt) ;
 
@@ -68,14 +67,11 @@ public class MyController {
       res.setVoyageInfo( iVoyageInfoRepository.getOne(cl.getIdVoyage()));
       iReservationRepository.save(res) ;
       ///////////////////Recuprer les places de l'objet voyages en fonction du nombre de place /////
-      ///////////ce qu'on peut pt etre faire est de supprimer les données et les persister qlq part
-       // //// ds une autre table
       VoyageInfo vi = iVoyageInfoRepository.getOne(cl.getIdVoyage()) ;
       List<Place> placesList = vi.getPlaces() ;
       List<Place> placesClients = new ArrayList<>() ;
 
      if(vi.getPlaces().size()==0) {
-
          iVoyageInfoRepository.delete(vi) ;
          String message = "pas de place disponible pour ce voyage" ;
          return new ResponseEntity<String>(message,HttpStatus.OK) ;
@@ -94,13 +90,18 @@ public class MyController {
          vi.setPlaces(placesList);
          iVoyageInfoRepository.save(vi) ;
          ClientResponse clientResponse = iHoraireService.getClientRespons(placesClients,vi,res,cl) ;
-
-
          return new ResponseEntity<ClientResponse>(clientResponse,HttpStatus.OK ) ;
 
      }
 
 
+   }
+   @GetMapping("/places/{idVoyage}")
+   public ResponseEntity<Integer>  getRemainingPlaces(@PathVariable String idVoyage){
+
+         List<Place> places = iVoyageInfoRepository.findById(Long.parseLong(idVoyage)).get().getPlaces() ;
+
+      return new ResponseEntity<>(places.size(), HttpStatus.OK) ;
    }
 
 }

@@ -23,7 +23,8 @@ export class DonPersoComponent implements OnInit {
 
 
   show: boolean = true;
-  nbrPlaces: number;
+  nbrPlaces: number  ;
+  placesRestant: any  ; 
   age: number;
   nom: string;
   prenom: string;
@@ -47,6 +48,9 @@ export class DonPersoComponent implements OnInit {
       nbrPlaces: ['', [Validators.required, Validators.max(5)]]
     });
     this.getId();
+    this.service.getRessources(`http://localhost:9090/places/`+`${this.idVoyage}`).subscribe(data=>{
+        this.placesRestant = data ; } , (error) => { this.placesRestant = 0  ;} 
+    ) ;  
   }
 
   sendData(values) {
@@ -74,7 +78,7 @@ export class DonPersoComponent implements OnInit {
   getId() {
     let url;
     url = atob(this.router.url.slice(7, this.router.url.length));
-    this.idVoyage = url.slice(29, url.length)
+    this.idVoyage = url.slice(29, url.length) ;
   }
 
 

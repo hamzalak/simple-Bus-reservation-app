@@ -18,6 +18,8 @@
 
 ![Capture d’écran de 2019-11-10 23-45-16](https://user-images.githubusercontent.com/46263489/68627348-d40b1100-04dd-11ea-8b95-65658649aa98.png)
 
+![Capture d’écran de 2019-11-10 23-44-50](https://user-images.githubusercontent.com/46263489/68628130-f3a33900-04df-11ea-9aac-64f17f26b68b.png)
+
 ![Capture d’écran de 2019-11-10 23-45-24](https://user-images.githubusercontent.com/46263489/68627369-e1c09680-04dd-11ea-8a60-ebecb6d9f06d.png)
 
 
